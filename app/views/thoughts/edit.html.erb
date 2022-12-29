@@ -1,19 +1,50 @@
-<h2>Редактировать?</h2>
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <style>
+      body{
+        background-color: #9370DB;
+      }
+      header {
+	background-color: #E6E6FA;
+	text-align: center;
+	width: 100%;
+	height: auto;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0 0 85% 85% / 30%;
+}
+ 
+      h2{
+        color: black;
+        font-family: 'Dancing Script', cursive;
+	      font-size: 20px;
+	      margin-bottom: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+    </body>
+<h2>Редактирование</h2>
 <%= form_for :thought, url: thought_path(@thought), method: :patch do |f| %>
   <%if @thought.errors.any? %>
     <% @thought.errors.full_messages.each do|msg| %>
 <div class= "alert alert-danger"><%= msg %><div>
-      <% end %>
+<% end %>
+ <% end %> 
   <p>
     Назови тему, которую хочешь расписать<br>
-    <%= f.text_field :@thought.title %>
+    <%= f.text_field(:title, {:class => 'form-control'}) %>
   </p>
    <p>
     Поделись подробнее своей мыслью<br>
-    <%= f.text_area :@thought.body %>
+    <%= f.text_area(:body, {:class => 'form-control'}) %>
   </p>
    <p>
-    <%= f.submit %>
+    <%= f.submit( {:class => 'btn btn-success'}) %>
   </p>
   <% end %>
+      </body
   

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  
   def create 
     @thought = Thought.find(params[:thought_id]) 
     @comment = @thought.comments.create(comment_params)

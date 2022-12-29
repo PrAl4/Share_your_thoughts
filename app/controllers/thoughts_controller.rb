@@ -1,4 +1,5 @@
 class ThoughtsController < ApplicationController
+
   def index
     @thought = Thought.all
   end

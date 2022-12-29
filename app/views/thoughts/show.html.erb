@@ -52,7 +52,7 @@
 <h1><%= @thought.title %></h1>
   <p><%= @thought.body %></p>
   <%= link_to "Редактировать", edit_thought_path(@thought), :class => 'btn btn-warning' %>
-    <%= link_to "Удалить", thought_path(@thought), method: :delete, data: {confirm: "Эти мысли больше не нужны?"}, :class => 'btn btn-danger' %>
+    <%= link_to "Удалить", thought_path(@thought), method: :delete, :class => 'btn btn-warning' %>
       
     <h4>Все комментарии</h4>
     <% @thought.comments.each do |comment| %>
