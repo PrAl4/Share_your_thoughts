@@ -5,7 +5,7 @@
       body{
         background-color: #9370DB;
       }
-      header {
+     header {
 	background-color: #E6E6FA;
 	text-align: center;
 	width: 100%;
@@ -17,11 +17,10 @@
 	border-radius: 0 0 85% 85% / 30%;
 }
    h1{
-        color: black;
+        color: #9370DB;
         font-family: 'Dancing Script', cursive;
-	      font-size: 20px;
+	      font-size: 32px;
 	      margin-bottom: 30px;
-        text-align: center;
       }
       
       h2{
@@ -46,22 +45,152 @@
 	      margin-bottom: 30px;
         text-align: center;
       }
+
+      * {
+   box-sizing: border-box;
+}
+body {
+   background: #e6f4fd;
+   font-family: 'Roboto', sans-serif;
+}
+.ui-form {
+   max-width: 500px;
+   padding: 80px 30px 30px;
+   margin: 50px auto 30px;
+   background: white;
+}
+.ui-form h3 {
+   position: relative;
+   z-index: 5;
+   margin: 0 0 60px;
+   text-align: center;
+   color: #4a90e2;
+   font-size: 30px;
+   font-weight: normal;
+}
+.ui-form h3:before {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   left: 60px;
+   top: -30px;
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   background: #fee8e4;
+}
+.ui-form h3:after {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   right: 50px;
+   top: -40px;
+   width: 0;
+   height: 0;
+   border-left: 55px solid transparent;
+   border-right: 55px solid transparent;
+   border-bottom: 90px solid #ffe3b5;
+}
+.form-row {
+   position: relative;
+   margin-bottom: 40px;
+}
+.form-row input {
+   display: block;
+   width: 100%;
+   padding: 0 10px;
+   line-height: 40px;
+   font-family: 'Roboto', sans-serif;
+   background: none;
+   border-width: 0;
+   border-bottom: 2px solid #4a90e2;
+   transition: all 0.2s ease;
+}
+.form-row label {
+   position: absolute;
+   left: 13px;
+   color: #9d959d;
+   font-size: 20px;
+   font-weight: 300;
+   transform: translateY(-35px);
+   transition: all 0.2s ease;
+}
+.form-row input:focus {
+   outline: 0;
+   border-color: #F77A52;
+}
+.form-row input:focus+label, .form-row input:valid+label {
+   transform: translateY(-60px);
+   margin-left: -14px;
+   font-size: 14px;
+   font-weight: 400;
+   outline: 0;
+   border-color: #F77A52;
+   color: #F77A52;
+}
+.ui-form input[type="submit"] {
+   width: 100%;
+   padding: 0;
+   line-height: 42px;
+   background: #4a90e2;
+   border-width: 0;
+   color: white;
+   font-size: 20px;
+}
+.ui-form p {
+   margin: 0;
+   padding-top: 10px;
+}
+            .button2 {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: .5em 2em;
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #DDA0DD #000 #DA70D6;
+  border-radius: 6px;
+  background: linear-gradient(#DDA0DD, #DA70D6) #DA70D6;
+  transition: 0.2s;
+} 
+.button2:hover { background: linear-gradient(#DA70D6, #BA55D3) #DA70D6; }
+.button2:active { background: linear-gradient(#BA55D3, #DA70D6) #BA55D3; }
+      h5{
+        color: #9370DB;
+        font-family: 'Dancing Script', cursive;
+	      font-size: 32px;
+	      margin-bottom: 30px;
+      }
+      
     </style>
   </head>
-    </body>
-<h1><%= @thought.title %></h1>
+  <header>
+     <h1> Рассмотрим мысль подробнее </h1>
+  </header>
+  <body>
+  <form action="" class="ui-form">
+    <div class="form-row">
+    <h4><%= @thought.title %></h4>
+    </div>
+    <div class="form-row">
   <p><%= @thought.body %></p>
-  <%= link_to "Редактировать", edit_thought_path(@thought), :class => 'btn btn-warning' %>
-    <%= link_to "Удалить", thought_path(@thought), method: :delete, :class => 'btn btn-warning' %>
+    </div>
+  
+  <button class="button2"> <%= link_to "Редактировать", edit_thought_path(@thought), :class => 'btn btn-warning' %> </button>
+  <button class="button2">  <%= link_to "Удалить", destroy_thought_path(@thought), method: :delete, data: {confirm: "Вы точно хотите избавиться от мысли?"}, :class => 'btn btn-warning' %>
+  </button>
+</form>
+
       
+<form action="" class="ui-form">
     <h4>Все комментарии</h4>
     <% @thought.comments.each do |comment| %>
     <div class="alert alert-light">
      <p><strong><%= comment.username %><strong>: <%= comment.body %></p>
       </div>
   <% end %>
-    
-<h3>Добавление комментарий</h3>
+<h5>Добавление комментарий</h5>
 <%= form_for([@thought, @thought.comments.build]) do |f| %>
   <p>Пользователь<br>
     <%= f.text_field(:username, {:class => 'form-control'}) %></p>
@@ -70,8 +199,9 @@
     <%= f.text_area(:body, {:class => 'form-control'}) %>
   </p>
    <p>
-    <%= f.submit( "Добавить комментарий", {:class => 'btn btn-warning'}) %>
+   <button class = "button2"> <%= f.submit( "Добавить комментарий", {:class => 'btn btn-warning'}) %> </button>
   </p>
+</form>
   <% end %>
-    </body>
-    </body>
+</body>
+    

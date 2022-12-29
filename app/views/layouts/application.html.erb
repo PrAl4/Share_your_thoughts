@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
     <title>RailsRuby3</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,16 +8,32 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-      
+      <style>
+                   .button2 {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: .5em 2em;
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #DDA0DD #000 #DA70D6;
+  border-radius: 6px;
+  background: linear-gradient(#DDA0DD, #DA70D6) #DA70D6;
+  transition: 0.2s;
+} 
+.button2:hover { background: linear-gradient(#DA70D6, #BA55D3) #DA70D6; }
+.button2:active { background: linear-gradient(#BA55D3, #DA70D6) #BA55D3; }
+      </style>
   </head>
 
   <body>
     <%= yield %>
       <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
       <nav class = "my-2 my_md-0 mr-md-3">
-        <scan class = "p-2 text-dark"><%=link_to "Главная страница", home_path %></scan>
-        <scan class = "p-2 text-dark"><%=link_to "Добавить мысли", new_thought_path %></scan>
-          <scan class = "p-2 text-dark"><%=link_to "Мои мысли", your_home_path %></scan>
+        <button class = "button2"><scan class = "p-2 text-dark"><%=link_to "Главная страница", home_path %></scan></button>
+       <button class = "button2"> <scan class = "p-2 text-dark"><%=link_to "Добавить мысли", new_thought_path %></scan></button>
+        <button class = "button2">  <scan class = "p-2 text-dark"><%=link_to "Обо мне", your_home_path %></scan></button>
         <nav>
   </body>
 </html>

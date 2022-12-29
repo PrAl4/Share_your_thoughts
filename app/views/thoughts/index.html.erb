@@ -29,42 +29,141 @@
 	      margin-bottom: 30px;
         text-align: center;
       }
-      .gradient-button {
-  text-decoration: none;
+      h4{
+        color: #fff;
+        font-family: 'Dancing Script', cursive;
+	      font-size: 20px;
+	      margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .ui-form {
+   max-width: 500px;
+   padding: 80px 30px 30px;
+   margin: 50px auto 30px;
+   background: white;
+}
+.ui-form h3 {
+   position: relative;
+   z-index: 5;
+   margin: 0 0 60px;
+   text-align: center;
+   color: #4a90e2;
+   font-size: 30px;
+   font-weight: normal;
+}
+.ui-form h3:before {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   left: 60px;
+   top: -30px;
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   background: #fee8e4;
+}
+.ui-form h3:after {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   right: 50px;
+   top: -40px;
+   width: 0;
+   height: 0;
+   border-left: 55px solid transparent;
+   border-right: 55px solid transparent;
+   border-bottom: 90px solid #ffe3b5;
+}
+.form-row {
+   position: relative;
+   margin-bottom: 40px;
+}
+.form-row input {
+   display: block;
+   width: 100%;
+   padding: 0 10px;
+   line-height: 40px;
+   font-family: 'Roboto', sans-serif;
+   background: none;
+   border-width: 0;
+   border-bottom: 2px solid #4a90e2;
+   transition: all 0.2s ease;
+}
+.form-row label {
+   position: absolute;
+   left: 13px;
+   color: #9d959d;
+   font-size: 20px;
+   font-weight: 300;
+   transform: translateY(-35px);
+   transition: all 0.2s ease;
+}
+.form-row input:focus {
+   outline: 0;
+   border-color: #F77A52;
+}
+.form-row input:focus+label, .form-row input:valid+label {
+   transform: translateY(-60px);
+   margin-left: -14px;
+   font-size: 14px;
+   font-weight: 400;
+   outline: 0;
+   border-color: #F77A52;
+   color: #F77A52;
+}
+.ui-form input[type="submit"] {
+   width: 100%;
+   padding: 0;
+   line-height: 42px;
+   background: #4a90e2;
+   border-width: 0;
+   color: white;
+   font-size: 20px;
+}
+.ui-form p {
+   margin: 0;
+   padding-top: 10px;
+}
+            .button2 {
   display: inline-block;
   color: white;
-  padding: 20px 30px;
-  margin: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background-image: linear-gradient(to right, #E6E6FA 0%, #9370DB 51%, #E6E6FA 100%);
-  background-size: 100%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  transition: .5s;
-}
-.gradient-button:hover {
-  background-position: right center;
-}
+  text-decoration: none;
+  padding: .5em 2em;
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #DDA0DD #000 #DA70D6;
+  border-radius: 6px;
+  background: linear-gradient(#DDA0DD, #DA70D6) #DA70D6;
+  transition: 0.2s;
+} 
+.button2:hover { background: linear-gradient(#DA70D6, #BA55D3) #DA70D6; }
+.button2:active { background: linear-gradient(#BA55D3, #DA70D6) #BA55D3; }
+
     </style>
   </head>
   <header>
     <h1><i><b> Share your thoughts </b></i></h1>
-    <button class="gradient-button"> <%= link_to "Загляни домой", your_home_path %> </button>
   </header>
   
   
   <body>
 
     <h4>Здесь хранятся все мысли</h4>
-
+<form action="" class = "ui-form">
     <% @thought.each do |thought| %>
     <div class="alert alert-light">
+      <div class="form-row">
      </h3><%= thought.title %></h3>
+      </div>
+      <div class="form-row">
       <p><%= thought.body %></p>
       <%= link_to "читать далее", thought_path(thought), :class => 'btn btn-default' %>
       </div>
+      </div>
   <% end %>
+    
+</form>
     
   </body>
