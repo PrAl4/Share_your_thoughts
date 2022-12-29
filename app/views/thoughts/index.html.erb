@@ -61,11 +61,15 @@
 
     <% @thought.each do |f| %>
   <h3>
+    <div class="alert alert-light">
     <%= thought.title %>
   </h3>
       <p>
         <%= thought.body %>
       </p>
-    <% end %>
+      <%= link_to "читать далее", thought_path(f), :class => 'btn btn-default' %>
+      </div>
+      <br>
+  <% end %>
     
   </body>

@@ -4,14 +4,17 @@ class ThoughtsController < ApplicationController
   end
   
   def new
-    
+    @thought = Thought.new
   end
 
   def create
     @thought = Thought.new(thought_params)
 
-    @thought.save
-    redirect_to @thought
+    if(@thought.save)
+      redirect_to @thought
+    else
+      render 'new'
+    end
   end
 
   private def thought_params

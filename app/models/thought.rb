@@ -1,2 +1,3 @@
 class Thought < ApplicationRecord
-end
+  validates :title, presence: true
+end 
