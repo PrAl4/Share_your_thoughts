@@ -7,9 +7,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      
   </head>
 
   <body>
     <%= yield %>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <nav class = "my-2 my_md-0 mr-md-3">
+        <scan class = "p-2 text-dark"><%=link_to "Главная страница", home_path %></scan>
+        <scan class = "p-2 text-dark"><%=link_to "Добавить мысли", new_thought_path %></scan>
+          <scan class = "p-2 text-dark"><%=link_to "Мои мысли", your_home_path %></scan>
+        <nav>
   </body>
 </html>

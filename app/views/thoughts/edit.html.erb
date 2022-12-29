@@ -1,0 +1,19 @@
+<h2>Редактировать?</h2>
+<%= form_for :thought, url: thought_path(@thought), method: :patch do |f| %>
+  <%if @thought.errors.any? %>
+    <% @thought.errors.full_messages.each do|msg| %>
+<div class= "alert alert-danger"><%= msg %><div>
+      <% end %>
+  <p>
+    Назови тему, которую хочешь расписать<br>
+    <%= f.text_field :@thought.title %>
+  </p>
+   <p>
+    Поделись подробнее своей мыслью<br>
+    <%= f.text_area :@thought.body %>
+  </p>
+   <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
+  

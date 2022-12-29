@@ -17,6 +17,16 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  def update
+    @thought = Thought.find(params[:id])
+    
+     if(@thought.update(thought_params))
+      redirect_to @thought
+    else
+      render 'edit'
+    end
+  end 
+  
   private def thought_params
     params.require(:thought).permit(:title, :body)
   end
@@ -24,4 +34,15 @@ class ThoughtsController < ApplicationController
   def show 
     @thought = Thought.find(params[:id])
   end
+
+  def edit
+    @thought = Thought.find(params[:id])
+  end
+
+  def destroy
+    @thought = Thought.find(params[:id])
+    @thought.destroy
+    redirect_to thoughts_path
+  end
+  
 end

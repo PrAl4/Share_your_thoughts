@@ -57,19 +57,14 @@
   
   <body>
 
-    <h2>Здесь вы можете увидеть мысли других людей</h2>
+    <h4>Здесь хранятся все мысли</h4>
 
-    <% @thought.each do |f| %>
-  <h3>
+    <% @thought.each do |thought| %>
     <div class="alert alert-light">
-    <%= thought.title %>
-  </h3>
-      <p>
-        <%= thought.body %>
-      </p>
-      <%= link_to "читать далее", thought_path(f), :class => 'btn btn-default' %>
+     </h3><%= thought.title %></h3>
+      <p><%= thought.body %></p>
+      <%= link_to "читать далее", thought_path(thought), :class => 'btn btn-default' %>
       </div>
-      <br>
   <% end %>
     
   </body>
