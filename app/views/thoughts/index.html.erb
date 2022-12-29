@@ -22,13 +22,50 @@
 	      font-size: 32px;
 	      margin-bottom: 30px;
       }
+      h2{
+        color: #E6E6FA;
+        font-family: 'Dancing Script', cursive;
+	      font-size: 20px;
+	      margin-bottom: 30px;
+        text-align: center;
+      }
+      .gradient-button {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #E6E6FA 0%, #9370DB 51%, #E6E6FA 100%);
+  background-size: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+}
+.gradient-button:hover {
+  background-position: right center;
+}
     </style>
   </head>
   <header>
     <h1><i><b> Share your thoughts </b></i></h1>
+    <button class="gradient-button"> <%= link_to "Загляни домой", your_home_path %> </button>
   </header>
   
   
   <body>
+
+    <h2>Здесь вы можете увидеть мысли других людей</h2>
+
+    <% @thought.each do |f| %>
+  <h3>
+    <%= thought.title %>
+  </h3>
+      <p>
+        <%= thought.body %>
+      </p>
+    <% end %>
     
   </body>
