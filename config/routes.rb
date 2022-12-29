@@ -3,5 +3,7 @@ Rails.application.routes.draw do
  get 'your_home' => 'pages#your_home', as: 'your_home'
  get 'friends' => 'pages#friends'
 
-resources :thoughts
+resources :thoughts do
+  resources :comments
+end
 end
