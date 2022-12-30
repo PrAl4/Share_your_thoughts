@@ -139,6 +139,7 @@ body {
 }
 .ui-form p {
    margin: 0;
+  color: black;
    padding-top: 10px;
 }
             .button2 {
@@ -156,6 +157,8 @@ body {
 } 
 .button2:hover { background: linear-gradient(#DA70D6, #BA55D3) #DA70D6; }
 .button2:active { background: linear-gradient(#BA55D3, #DA70D6) #BA55D3; }
+      
+      
       h5{
         color: #9370DB;
         font-family: 'Dancing Script', cursive;
@@ -178,30 +181,29 @@ body {
     </div>
   
   <button class="button2"> <%= link_to "Редактировать", edit_thought_path(@thought), :class => 'btn btn-warning' %> </button>
-  <button class="button2">  <%= link_to "Удалить", destroy_thought_path(@thought), method: :delete, data: {confirm: "Вы точно хотите избавиться от мысли?"}, :class => 'btn btn-warning' %>
-  </button>
 </form>
 
-      
-<form action="" class="ui-form">
+<form >
     <h4>Все комментарии</h4>
-    <% @thought.comments.each do |comment| %>
-    <div class="alert alert-light">
+  <div class="alert alert-light">
+    <%  @thought.comments.each do |comment| %>
      <p><strong><%= comment.username %><strong>: <%= comment.body %></p>
-      </div>
   <% end %>
+     </div>
+  </form>
+   <form action="" class="ui-form"> 
 <h5>Добавление комментарий</h5>
 <%= form_for([@thought, @thought.comments.build]) do |f| %>
   <p>Пользователь<br>
     <%= f.text_field(:username, {:class => 'form-control'}) %></p>
    <p>
-    Введите комментария<br>
+    Введите комментарий<br>
     <%= f.text_area(:body, {:class => 'form-control'}) %>
   </p>
    <p>
-   <button class = "button2"> <%= f.submit( "Добавить комментарий", {:class => 'btn btn-warning'}) %> </button>
+    <%= f.submit( "Добавить комментарий", {:class => 'btn btn-warning'}) %> 
   </p>
-</form>
   <% end %>
+</form>
 </body>
     

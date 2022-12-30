@@ -24,27 +24,150 @@
 	      margin-bottom: 30px;
         text-align: center;
       }
+      h1{
+         color: #9370DB;
+        font-family: 'Dancing Script', cursive;
+	      font-size: 32px;
+	      margin-bottom: 30px;
+      }
+
+      
+      .ui-form {
+   max-width: 500px;
+   padding: 80px 30px 30px;
+   margin: 50px auto 30px;
+   background: white;
+}
+.ui-form h3 {
+   position: relative;
+   z-index: 5;
+   margin: 0 0 60px;
+   text-align: center;
+   color: #4a90e2;
+   font-size: 30px;
+   font-weight: normal;
+}
+.ui-form h3:before {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   left: 60px;
+   top: -30px;
+   width: 100px;
+   height: 100px;
+   border-radius: 50%;
+   background: #fee8e4;
+}
+.ui-form h3:after {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   right: 50px;
+   top: -40px;
+   width: 0;
+   height: 0;
+   border-left: 55px solid transparent;
+   border-right: 55px solid transparent;
+   border-bottom: 90px solid #ffe3b5;
+}
+.form-row {
+   position: relative;
+   margin-bottom: 40px;
+}
+.form-row input {
+   display: block;
+   width: 100%;
+   padding: 0 10px;
+   line-height: 40px;
+   font-family: 'Roboto', sans-serif;
+   background: none;
+   border-width: 0;
+   border-bottom: 2px solid #4a90e2;
+   transition: all 0.2s ease;
+}
+.form-row label {
+   position: absolute;
+   left: 13px;
+   color: #9d959d;
+   font-size: 20px;
+   font-weight: 300;
+   transform: translateY(-35px);
+   transition: all 0.2s ease;
+}
+.form-row input:focus {
+   outline: 0;
+   border-color: #F77A52;
+}
+.form-row input:focus+label, .form-row input:valid+label {
+   transform: translateY(-60px);
+   margin-left: -14px;
+   font-size: 14px;
+   font-weight: 400;
+   outline: 0;
+   border-color: #F77A52;
+   color: #F77A52;
+}
+.ui-form input[type="submit"] {
+   width: 100%;
+   padding: 0;
+   line-height: 42px;
+   background: #4a90e2;
+   border-width: 0;
+   color: white;
+   font-size: 20px;
+}
+.ui-form p {
+   margin: 0;
+   padding-top: 10px;
+}
+            .button2 {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: .5em 2em;
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #DDA0DD #000 #DA70D6;
+  border-radius: 6px;
+  background: linear-gradient(#DDA0DD, #DA70D6) #DA70D6;
+  transition: 0.2s;
+} 
+.button2:hover { background: linear-gradient(#DA70D6, #BA55D3) #DA70D6; }
+.button2:active { background: linear-gradient(#BA55D3, #DA70D6) #BA55D3; }
     </style>
   </head>
+  <header>
+    <h1>Есть чем поделиться?</h1>
+  </header>
     </body>
-<h2>Есть чем поделиться?</h2>
+  <form class = "ui-form ">
+     <div class="form-row">
 <%= form_for :thought, url: thoughts_path do |f| %>
   <%if @thought.errors.any? %>
     <% @thought.errors.full_messages.each do|msg| %>
 <div class= "alert alert-danger"><%= msg %><div>
 <% end %>
  <% end %> 
+ </div>
+    <div class="form-row">
   <p>
     Назови тему, которую хочешь расписать<br>
     <%= f.text_field(:title, {:class => 'form-control'}) %>
   </p>
+    </div>
+    <div class="form-row">
    <p>
     Поделись подробнее своей мыслью<br>
     <%= f.text_area(:body, {:class => 'form-control'}) %>
   </p>
+    </div>
+    <div class="form-row">
    <p>
      Поделиться мыслью<br>
-    <%= f.submit( {:class => 'btn btn-success'}) %>
+   <button class = "button2"> <%= f.submit( {:class => 'btn btn-success'}) %></button>
   </p>
+    </div>
   <% end %>
+  </form>
     </body>

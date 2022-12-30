@@ -30,24 +30,13 @@ class ThoughtsController < ApplicationController
   private def thought_params
     params.require(:thought).permit(:title, :body)
   end
-
+  
   def show
     @thought = Thought.find(params[:id])
   end
 
   def edit
     @thought = Thought.find(params[:id])
-
-    if @thought.update(thought_params)
-      redirect_to @thought
-    else
-      render 'edit'
-    end
   end
 
-  def destroy
-    @thought = Thought.find(params[:id])
-    @thought.destroy
-     redirect_to :action => :index, status: 303 
-  end
 end
